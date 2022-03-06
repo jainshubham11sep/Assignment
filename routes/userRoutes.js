@@ -4,7 +4,7 @@ const router=require('express').Router();
 
 router.post('/adduser',userController.addUsers);
 router.get('/signin',userController.signinUser)
-router.get('/getuser/:id',userController.getUserData);
+router.get('/getuser/:user_id',userController.getUserData);
 router.put("/updateuser",userController.updateUserData);
 router.delete("/deleteuser",userController.deleteUserData);
 
