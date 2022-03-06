@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+    }, {
+        // timestamps: false
+        updatedAt:false
     })
 
     return sub_category;
