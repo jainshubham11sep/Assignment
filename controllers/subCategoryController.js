@@ -10,7 +10,8 @@ const addSubCategory = async (req, res) => {
         sub_cat_name: req.body.sub_cat_name,
         cat_id:req.body.cat_id
     }
-    const sub_category = await SubCategory.create(info)
+    const sub_category = await SubCategory.create(info);
+    if (!sub_category) return res.status(404).send({ message: "sub Category Not Added." });
     res.status(200).send(sub_category);
     // console.log(category);
 }
@@ -24,6 +25,7 @@ const getSubCategoryData = async (req, res) => {
     let sub_category = await SubCategory.findOne({
         where: { sub_cat_id: sub_cat_id }
     });
+    if (!sub_category) return res.status(404).send({ message: " sub Category Not found." });
     res.status(200).send(sub_category);
 }
 
@@ -35,6 +37,7 @@ const getSubCategoryData = async (req, res) => {
 const updateSubCategoryData = async (req, res) => {
     let sub_cat_id = req.body.sub_cat_id;
     let sub_category = await SubCategory.update(req.body, { where: { sub_cat_id: sub_cat_id } });
+    if (!sub_category) return res.status(404).send({ message: " sub Category Not Updated." });
     res.status(200).send(sub_category);
 }
 

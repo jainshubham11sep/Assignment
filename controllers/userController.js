@@ -14,6 +14,7 @@ const addUsers = async (req, res) => {
         token: null
     }
     const user = await User.create(info);
+    if (!user) return res.status(404).send({ message: "User Not Added." });
     res.status(200).send(user);
     // console.log(user);
 }
@@ -67,10 +68,10 @@ const signinUser = async (req, res) => {
 //get single product
 
 const getUserData = async (req, res) => {
-    let user_id = req.params.user_id
     let user = await User.findOne({
-        where: { user_id: user_id }
+        where: { user_id: req.params.user_id }
     });
+    if (!user) return res.status(404).send({ message: "User Not found." });
     res.status(200).send(user);
 }
 
@@ -80,8 +81,8 @@ const getUserData = async (req, res) => {
 
 
 const updateUserData = async (req, res) => {
-    let user_id = req.body.user_id;
-    let user = await User.update(req.body, { where: { user_id: user_id } });
+    let user = await User.update(req.body, { where: { user_id: req.body.user_id } });
+    if (!user) return res.status(404).send({ message: "User Not Updated." });
     res.status(200).send(user);
 }
 

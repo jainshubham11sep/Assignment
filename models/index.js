@@ -34,7 +34,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require('./userModel.js')(sequelize, DataTypes)
-db.category = require('./categoryModel.js')(sequelize, DataTypes);
+db.categories = require('./categoryModel.js')(sequelize, DataTypes);
 db.sub_category=require('./sub_categoryModel.js')(sequelize,DataTypes);
 Object.keys(db).forEach(function (modelName) {
     if ("associate" in db[modelName]) {
