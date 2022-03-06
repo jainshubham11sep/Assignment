@@ -1,5 +1,5 @@
 const db = require('../models');
-const SubCategory = require("../models").sub_category;
+const SubCategory = require("../models").sub_categories;
 
 //create sub category model
 
@@ -16,8 +16,6 @@ const addSubCategory = async (req, res) => {
     // console.log(category);
 }
 
-
-
 //get category
 
 const getSubCategoryData = async (req, res) => {
@@ -29,10 +27,7 @@ const getSubCategoryData = async (req, res) => {
     res.status(200).send(sub_category);
 }
 
-
 //update Category
-
-
 
 const updateSubCategoryData = async (req, res) => {
     let sub_cat_id = req.body.sub_cat_id;
