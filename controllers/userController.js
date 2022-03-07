@@ -90,9 +90,9 @@ const updateUserData = async (req, res) => {
 //delete  user
 
 const deleteUserData = async (req, res) => {
-    let user_id = req.params.user_id
+    // let user_id = req.params.user_id
     await User.destroy({
-        where: { user_id: user_id }
+        where: { user_id: req.body.user_id }
     });
     res.status(200).send('deleted');
 }

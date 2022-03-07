@@ -40,9 +40,9 @@ const updateSubCategoryData = async (req, res) => {
 //delete  Category
 
 const deleteSubCategoryData = async (req, res) => {
-    let sub_cat_id = req.params.sub_cat_id;
+    // let sub_cat_id = req.params.sub_cat_id;
     await SubCategory.destroy({
-        where: { sub_cat_id: sub_cat_id }
+        where: { sub_cat_id: req.body.sub_cat_id }
     });
     res.status(200).send('deleted');
 }
